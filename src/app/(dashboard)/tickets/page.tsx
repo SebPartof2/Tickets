@@ -5,7 +5,7 @@ import { db } from "@/db";
 import { tickets } from "@/db/schema";
 import { eq, desc } from "drizzle-orm";
 import { Button } from "@/components/ui/button";
-import { TicketCard } from "@/components/tickets/ticket-card";
+import { TicketList } from "@/components/tickets/ticket-list";
 
 export default async function TicketsPage() {
   const session = await auth();
@@ -45,24 +45,7 @@ export default async function TicketsPage() {
         </Button>
       </div>
 
-      {ticketList.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground mb-4">No tickets yet</p>
-          <Button asChild>
-            <Link href="/tickets/new">Create your first ticket</Link>
-          </Button>
-        </div>
-      ) : (
-        <div className="space-y-3">
-          {ticketList.map((ticket) => (
-            <TicketCard
-              key={ticket.id}
-              ticket={ticket}
-              showUser={isAdmin}
-            />
-          ))}
-        </div>
-      )}
+      <TicketList tickets={ticketList} showUser={isAdmin} />
     </div>
   );
 }
