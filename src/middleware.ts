@@ -7,7 +7,7 @@ export default auth((req) => {
   const isAdmin = session?.user?.accessLevel === "admin";
 
   // Public routes
-  const publicRoutes = ["/", "/login"];
+  const publicRoutes = ["/", "/login", "/sso"];
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
 
   // Admin routes
