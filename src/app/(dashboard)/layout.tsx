@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { NotificationPrompt } from "@/components/notifications/notification-prompt";
 import { Providers } from "@/components/providers";
 
 export default async function DashboardLayout({
@@ -29,6 +30,7 @@ export default async function DashboardLayout({
         />
         <main className="flex-1 pb-20 md:pb-6">{children}</main>
         <MobileNav isAdmin={isAdmin} />
+        <NotificationPrompt />
       </div>
     </Providers>
   );

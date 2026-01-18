@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import { LogOut, User } from "lucide-react";
+import { LogOut, Settings, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
@@ -21,8 +21,8 @@ export function Header({ user }: HeaderProps) {
           Family Tickets
         </Link>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-1">
+          <div className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground mr-2">
             <User className="h-4 w-4" />
             <span>{user.name}</span>
             {user.accessLevel === "admin" && (
@@ -31,6 +31,17 @@ export function Header({ user }: HeaderProps) {
               </span>
             )}
           </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            asChild
+            className="hidden md:flex"
+            title="Settings"
+          >
+            <Link href="/settings">
+              <Settings className="h-4 w-4" />
+            </Link>
+          </Button>
           <Button
             variant="ghost"
             size="icon"
